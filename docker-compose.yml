@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    environment:
+      TZ: 'America/New_York'  # Adjust for your timezone
+      WEBPASSWORD: 'your_web_password_here'  # Set the web interface password
+      DNS1: 1.1.1.1
+      DNS2: 1.0.0.1
+    volumes:
+      - './etc-pihole/:/etc/pihole/'
+      - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN

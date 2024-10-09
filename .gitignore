@@ -1,0 +1,10 @@
+# Ignore volume data directories
+etc-pihole/
+etc-dnsmasq.d/
+
+# Ignore Docker files
+.dockerignore
+docker-compose.override.yml
+
+# Ignore log files or temporary files
+*.log
